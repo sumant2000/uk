@@ -1,0 +1,54 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      {{ title }}
+    </div>
+    <div class="panel-body">
+      <form [formGroup]="angForm" novalidate>
+        <div class="form-group">
+          <label class="col-md-4">Person First Name</label>
+          <input type="text" class="form-control" formControlName="name" #name />
+        </div>
+        <div *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['name'].errors.required">
+           First  Name is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4">Person Last Name</label>
+          <input type="text" class="form-control" formControlName="lastname" #lastname/>
+        </div>
+        <div *ngIf="angForm.controls['lastname'].invalid && (angForm.controls['lastname'].dirty || angForm.controls['lastname'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['lastname'].errors.required">
+            Last Name is required.
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label class="col-md-4">Person Age</label>
+          <input type="text" class="form-control" formControlName="age" #age/>
+        </div>
+        <div *ngIf="angForm.controls['age'].invalid && (angForm.controls['age'].dirty || angForm.controls['age'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['age'].errors.required">
+            Age is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4">Person's  favorite color </label>
+          <input type="text" class="form-control" formControlName="favoritecolor" #favoritecolor/>
+        </div>
+        <div *ngIf="angForm.controls['favoritecolor'].invalid && (angForm.controls['favoritecolor'].dirty || angForm.controls['favoritecolor'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['favoritecolor'].errors.required">
+            Favorite Color is required.
+          </div>
+        </div>
+
+
+          <div class="form-group">
+            <button (click)="addPerson(name.value,lastname.value, age.value,favoritecolor.value)" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary">Add</button>
+          </div>
+      </form>
+    </div>
+  </div>
